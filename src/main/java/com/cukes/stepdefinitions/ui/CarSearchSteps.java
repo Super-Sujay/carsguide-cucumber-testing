@@ -5,6 +5,7 @@ import org.automation.utilities.ExplicitWait;
 import com.cukes.pages.CarSearchPage;
 
 import io.cucumber.java8.En;
+import io.cucumber.java8.StepDefinitionBody.A0;
 
 public class CarSearchSteps implements En {
 
@@ -12,11 +13,11 @@ public class CarSearchSteps implements En {
 
 	public CarSearchSteps(CarSearchPage carSearchPage) {
 		this.carSearchPage = carSearchPage;
-		Then("I select Make as {string}", (String data) -> carSearchPage.make.selectByValue(data));
-		And("I select Model as {string}", (String data) -> selectModel(data));
-		And("I select Location as {string}", (String data) -> carSearchPage.location.selectByValue(data));
-		And("I select Price is {string}", (String data) -> carSearchPage.price.selectByVisibleText(data));
-		And("I click on Find My Next Car button", () -> carSearchPage.search.click());
+		Then("I select Make as {string}", carSearchPage.make::selectByValue);
+		And("I select Model as {string}", this::selectModel);
+		And("I select Location as {string}", carSearchPage.location::selectByValue);
+		And("I select Price is {string}", carSearchPage.price::selectByVisibleText);
+		And("I click on Find My Next Car button", (A0) carSearchPage.search::click);
 	}
 
 	private void selectModel(String data) {
