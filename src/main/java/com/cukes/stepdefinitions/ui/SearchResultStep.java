@@ -1,28 +1,17 @@
 package com.cukes.stepdefinitions.ui;
 
-import org.testng.Assert;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import com.cukes.pages.SearchResultPage;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
+import io.cucumber.java8.En;
 
-public class SearchResultStep {
-
-	private SearchResultPage searchResultPage;
+public class SearchResultStep implements En {
 
 	public SearchResultStep(SearchResultPage searchResultPage) {
-		this.searchResultPage = searchResultPage;
-	}
-
-	@Then("I should see the list of searched cars")
-	public void i_should_see_the_list_of_searched_cars() {
-		Assert.assertTrue(searchResultPage.carList.isVisible(), "List of cars not present");
-	}
-
-	@And("The page title should be {string}")
-	public void the_page_title_should_be(String data) {
-		Assert.assertEquals(searchResultPage.getPageTitle(), data, "Incorrect page title");
+		Then("I should see the list of searched cars", () -> assertTrue(searchResultPage.carList.isVisible(), "List of cars not present"));
+		And("The page title should be {string}", (String data) -> assertEquals(searchResultPage.getPageTitle(), data, "Incorrect page title"));
 	}
 
 }
