@@ -12,14 +12,12 @@
 		<!-- Dependency versions -->
 		<framework.version>1.0.0</framework.version>
 		<cucumber.version>6.8.0</cucumber.version>
-		<testng.version>6.14.3</testng.version>
+		<testng.version>7.3.0</testng.version>
 		<picocontainer.version>1.2</picocontainer.version>
 		<reporting.plugin.version>4.0.84</reporting.plugin.version>
 		<!-- Configurable variables -->
-		<suiteFile>TestExecution</suiteFile>
-		<threads>1</threads>
 		<browser>chrome</browser>
-		<overwrite.binaries>false</overwrite.binaries>
+		<threads>1</threads>
 		<remote>false</remote>
 		<seleniumGridURL></seleniumGridURL>
 		<platform></platform>
